@@ -8,34 +8,24 @@ export default {
   name: 'SearchCity',
   data() {
     return {
-      inputValue: '',
-      selectedCountry: 'Afghanistan',
-      selectedCountryCities: [],
-      selectedCity: ''
+      inputValue: ''
     };
   },
   computed: {
     ...mapGetters('weatherData', {
-      cities: 'getCities',
-      countries: 'getCountries',
-      city: 'getCity'
+      cities: 'getCities'
     })
   },
   methods: {
     filteredList() {
-      return this.selectedCountryCities.filter(
+      return this.cities.filter(
         (city) => city.toLowerCase().startsWith(this.inputValue.toLowerCase())
       ).slice(0, 10);
     },
-    getWeather(e) {
-      console.log(e);
-      this.$store.commit('weatherData/updateCity', this.selectedCity);
-      this.$store.dispatch('weatherData/fetchWeatherData', this.city);
+    getWeather(event) {
+      this.inputValue = '';
+      this.$store.dispatch('weatherData/fetchWeatherData', event.target.innerText);
     }
-  },
-  updated() {
-    const requiredObject = this.cities.find((elem) => elem.country === this.selectedCountry);
-    this.selectedCountryCities = requiredObject.cities;
   }
 };
 </script>

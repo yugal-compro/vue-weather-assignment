@@ -17,8 +17,6 @@ export default {
   }),
   created() {
     this.$store.dispatch('weatherData/fetchCitiesData');
-    // // this.$store.dispatch('weatherData/fetchWeatherData',
-    // this.$store.getters['weatherData/getCity']);
   }
 };
 </script>

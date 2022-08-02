@@ -1,15 +1,8 @@
 <div class="search-city-container">
-    <select name="" id="" v-model="selectedCountry">
-        <option v-for="country in countries" :key="country">{{ country }}</option>
-    </select>
-    <select name="" id="" v-model="selectedCity">
-        <option v-for="city in selectedCountryCities" :key="city">{{ city }}</option>
-    </select>
     <input type="text" v-model="inputValue" placeholder="Search city...">
-    <button @click="getWeather()">Get Weather</button>
     <div v-if="inputValue.length!=0">
         <div v-for="city in filteredList()" :key="city">
-            <p>{{ city }}</p>
+            <p @click="getWeather">{{ city }}</p>
         </div>
     </div>
     
