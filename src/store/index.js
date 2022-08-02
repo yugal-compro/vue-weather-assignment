@@ -1,14 +1,8 @@
 import { createStore } from 'vuex';
+import weatherData from './modules/weather';
 
 export default createStore({
-  state: {
-  },
-  getters: {
-  },
-  mutations: {
-  },
-  actions: {
-  },
   modules: {
-  },
+    weatherData
+  }
 });
