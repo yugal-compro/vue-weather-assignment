@@ -1,0 +1,17 @@
+.search-city-container{
+    flex-grow: 3;
+    text-align: center;
+    backdrop-filter: blur(10px);
+    input{
+        color: black;
+        width: 70%;
+        background-color: inherit;
+        margin-top: 40px;
+    }
+    p{
+        color: black;
+        &:hover{
+            cursor: pointer;
+        }
+    }
+}

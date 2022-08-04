@@ -18,13 +18,28 @@ export default {
   },
   methods: {
     filteredList() {
-      return this.cities.filter(
+      const cities = this.cities.map(
+        (city) => city.slice(0, -3)
+      );
+      const filteredCities = cities.filter(
         (city) => city.toLowerCase().startsWith(this.inputValue.toLowerCase())
       ).slice(0, 10);
+
+      const filteredCitiesIncludes = cities.filter(
+        (city) => city.toLowerCase().includes(this.inputValue.toLowerCase())
+      ).slice(0, 10);
+
+      for (let i = 0; i < 10; i += 1) {
+        if (!filteredCities.includes(filteredCitiesIncludes[i])) {
+          filteredCities.push(filteredCitiesIncludes[i]);
+        }
+      }
+      return filteredCities.slice(0, 10);
     },
     getWeather(event) {
       this.inputValue = '';
-      this.$store.dispatch('weatherData/fetchWeatherData', event.target.innerText);
+      const cityAndCountry = event.target.innerText.split(',');
+      this.$store.dispatch('weatherData/fetchWeatherData', cityAndCountry);
     }
   }
 };

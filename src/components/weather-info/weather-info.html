@@ -1,10 +1,13 @@
 <div class="weather-info-container">
-    <div v-if="weather">
-        <h2>{{ weather.weather[0].main }}</h2>
-        <p>Description: {{ weather.weather[0].description }}</p>
-        <p>Temperature: {{ weather.main.temp }}&#8451;</p>
-        <p>Humidity: {{ weather.main.humidity }}</p>
-        <p></p>
+    <div v-if="weather" class="weather-info">
+        <p class="temp">{{ weather.main.temp }}&#8451;</p>
+        <p class="city-name">{{ weather.name }}</p>
+        <div>
+            <img class="icon" :src=getIcon(weather.weather[0].icon)>
+            <i class="bi bi-cloud"></i>
+            <p class="main">{{ weather.weather[0].main }}</p>
+        </div>
+       <p>date: {{ date }}</p>
     </div>
-    <h1 v-else>Please select a city</h1>
+    <h1 v-else>Search weather of a city</h1>
 </div>
