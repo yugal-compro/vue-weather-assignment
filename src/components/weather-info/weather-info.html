@@ -1,13 +1,19 @@
 <div class="weather-info-container">
     <div v-if="weather" class="weather-info">
-        <p class="temp">{{ weather.main.temp }}&#8451;</p>
-        <p class="city-name">{{ weather.name }}</p>
+        <p class="temp">{{ weather.main.temp }}&deg;</p>
         <div>
-            <img class="icon" :src=getIcon(weather.weather[0].icon)>
-            <i class="bi bi-cloud"></i>
-            <p class="main">{{ weather.weather[0].main }}</p>
+            <p class="city-name">{{ weather.name }}</p>  
+            <p>{{ date }}</p>
         </div>
-       <p>date: {{ date }}</p>
+        <div>
+            <p class="icon" v-if="weather.weather[0].main === 'Clouds'"> <b-icon-clouds /></p>
+            <p class="icon" v-if="weather.weather[0].main === 'Haze'"> <b-icon-cloud-haze /></p>
+            <p class="icon" v-if="weather.weather[0].main === 'Clear'"> <b-icon-sun /></p>
+            <p class="icon" v-if="weather.weather[0].main === 'Rain'"> <b-icon-cloud-drizzle /></p>
+            <p class="icon" v-if="weather.weather[0].main === 'Snow'"> <b-icon-snow /></p>
+            <p class="icon" v-if="weather.weather[0].main === 'Thunderstorm'"> <b-icon-cloud-lightning-rain /></p>
+            <p class="main">{{ weather.weather[0].description }}</p>
+        </div>
     </div>
     <h1 v-else>Search weather of a city</h1>
 </div>

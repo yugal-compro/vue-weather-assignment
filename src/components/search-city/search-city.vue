@@ -13,8 +13,13 @@ export default {
   },
   computed: {
     ...mapGetters('weatherData', {
-      cities: 'getCities'
-    })
+      cities: 'getCities',
+      weather: 'getWeatherData'
+    }),
+    placeholderValue() {
+      if (this.weather == null) return 'Search location...';
+      return 'Another location...';
+    }
   },
   methods: {
     filteredList() {

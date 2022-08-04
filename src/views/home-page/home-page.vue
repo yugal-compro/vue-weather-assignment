@@ -5,6 +5,13 @@
 import { mapGetters } from 'vuex';
 import WeatherInfo from '../../components/weather-info/weather-info.vue';
 import SearchCity from '../../components/search-city/search-city.vue';
+import cloudBg from '../../assets/background-images/clouds-bg.jpg';
+import snowBg from '../../assets/background-images/snow-bg.jpg';
+import rainBg from '../../assets/background-images/rain-bg.jpg';
+import hazeBg from '../../assets/background-images/haze-bg.jpg';
+import weatherBg from '../../assets/background-images/weather-bg.jpg';
+import thunderstormBg from '../../assets/background-images/thunderstorm-bg.jpg';
+import clearSkyBg from '../../assets/background-images/clearsky-bg.jpg';
 
 export default {
   name: 'HomePage',
@@ -15,31 +22,31 @@ export default {
   methods: {
     getImage() {
       if (this.weather == null) {
-        return 'https://www.maximum-inc.com/wp-content/uploads/2022/01/Meteorology.jpeg';
+        return weatherBg;
       }
       const weather = this.weather.weather[0].main;
       if (weather === 'Clouds') {
-        return 'https://www.treehugger.com/thmb/Kc3Gx2Y6SmBJNVZgf0OCoaEZpPQ=/735x0/__opt__aboutcom__coeus__resources__content_migration__mnn__images__2018__08__CollectionOfCloudsAgainstABlueSky-8cae9f3109d14dcf98d9facc5775222f.jpg';
+        return cloudBg;
       }
       if (weather === 'Rain') {
-        return 'https://t3.ftcdn.net/jpg/03/19/67/24/360_F_319672457_RgWdAgsS2MzHQRvU5jJWvpyCDwIYr8O9.jpg';
+        return rainBg;
       }
       if (weather === 'Thunderstorm') {
-        return 'https://www.thoughtco.com/thmb/VttBsKCr59FG8p9kJKVGMZbjmaE=/2868x2151/smart/filters:no_upscale()/GettyImages-673747736-5b1989c3fa6bcc003614911a.jpg';
+        return thunderstormBg;
       }
       if (weather === 'Drizzle') {
-        return 'https://akm-img-a-in.tosshub.com/indiatoday/images/story/201707/drizzle-647_072717054006.jpg?size=770:433';
+        return rainBg;
       }
       if (weather === 'Snow') {
-        return 'https://images.pexels.com/photos/1571442/pexels-photo-1571442.jpeg?cs=srgb&dl=pexels-james-wheeler-1571442.jpg&fm=jpg';
+        return snowBg;
       }
       if (weather === 'Clear') {
-        return 'https://outforia.com/wp-content/uploads/2022/01/shutterstock_263027252-1.jpg';
+        return clearSkyBg;
       }
       if (weather === 'Haze') {
-        return 'https://media.wired.co.uk/photos/606dba04751ea43ccd9898b5/16:9/w_2560%2Cc_limit/london-heatwave.jpg';
+        return hazeBg;
       }
-      return 'https://image.cnbcfm.com/api/v1/image/106849039-1614858338482-gettyimages-634465411-dsgf001080.jpeg?v=1614858433';
+      return weatherBg;
     }
   },
   computed: {
@@ -47,6 +54,9 @@ export default {
       city: 'getCity',
       weather: 'getWeatherData'
     })
+  },
+  beforeMount() {
+    console.log('Loading....');
   },
   created() {
     this.$store.dispatch('weatherData/fetchCitiesData');
