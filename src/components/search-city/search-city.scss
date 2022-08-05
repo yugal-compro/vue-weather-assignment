@@ -1,6 +1,6 @@
 .side-bar {
   width: 400px;
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(30px);
   color: white;
   padding: 24px;
   .search-city-container {
@@ -33,13 +33,14 @@
   .weather-details {
     margin-top: 40px;
     .weather-details-heading {
+      font-size: 20px;
       font-weight: bold;
     }
     .weather-details-item {
       display: flex;
       justify-content: space-between;
       .weather-details-value {
-        font-weight: bold;
+        font-weight: 540;
       }
     }
   }

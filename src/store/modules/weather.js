@@ -18,13 +18,6 @@ const weatherData = {
     updateWeather(state, weather) {
       state.weather = weather;
     },
-    // updateCities(state, citiesData) {
-    //   let cities = [];
-    //   for (let i = 0; i < citiesData.length; i += 1) {
-    //     cities = cities.concat(citiesData[i].cities);
-    //   }
-    //   state.cities = cities;
-    // },
     updateCities(state, citiesData) {
       const cities = [];
       for (let i = 0; i < citiesData.length; i += 1) {
@@ -45,6 +38,11 @@ const weatherData = {
       const response = await axios.get('https://countriesnow.space/api/v0.1/countries');
       const result = response.data;
       commit('updateCities', result.data);
+    },
+    async fetchCurrentCity({ commit }, latAndLong) {
+      const response = await axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${latAndLong.lat}&lon=${latAndLong.long}&appid=5a884753d54e27765479c5d311582b20&units=metric`);
+      const result = response.data;
+      commit('updateWeather', result);
     }
   }
 };

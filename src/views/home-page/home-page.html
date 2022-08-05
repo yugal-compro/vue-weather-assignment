@@ -1,4 +1,7 @@
-<div class="home-page" :style="{ backgroundImage: 'url(' + getImage() + ')' }">
+<div v-show="!weather" class="loader">
+    <img src="../../assets/loaders/ring-loader.gif" alt="loading">
+  </div>
+<div v-show="weather" class="home-page" :style="{ backgroundImage: 'url(' + getImage() + ')' }">
     <WeatherInfo />
     <SearchCity />
 </div>

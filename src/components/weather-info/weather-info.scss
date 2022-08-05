@@ -11,16 +11,18 @@
     justify-content: center;
     align-items: center;
     .temp {
-      font-size: 60px;
-      font-weight: 500;
+      font-size: 80px;
       margin-right: 16px;
     }
     .city-name {
-      font-size: 40px;
+      font-size: 60px;
       margin-right: 16px;
     }
     .icon{
-      font-size: 40px;
+      font-size: 60px;
+    }
+    .main{
+      margin-left: 8px;
     }
   }
 }

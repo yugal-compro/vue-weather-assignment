@@ -15,6 +15,12 @@ import clearSkyBg from '../../assets/background-images/clearsky-bg.jpg';
 
 export default {
   name: 'HomePage',
+  data() {
+    return {
+      latitude: '',
+      longitude: ''
+    };
+  },
   components: {
     WeatherInfo,
     SearchCity
@@ -47,18 +53,29 @@ export default {
         return hazeBg;
       }
       return weatherBg;
+    },
+
+    showPosition(position) {
+      this.latitude = position.coords.latitude;
+      this.longitude = position.coords.longitude;
+      this.$store.dispatch('weatherData/fetchCurrentCity', { lat: this.latitude, long: this.longitude });
+    },
+
+    getLocation() {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(this.showPosition);
+      } else {
+        console.log('Geolocation is not supported by this browser.');
+      }
     }
   },
   computed: {
     ...mapGetters('weatherData', {
-      city: 'getCity',
       weather: 'getWeatherData'
     })
   },
-  beforeMount() {
-    console.log('Loading....');
-  },
   created() {
+    this.getLocation();
     this.$store.dispatch('weatherData/fetchCitiesData');
   }
 };
