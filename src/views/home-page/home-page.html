@@ -1,6 +1,6 @@
-<div v-show="!weather" class="loader">
+<!-- <div v-show="!weather" class="loader">
     <img src="../../assets/loaders/ring-loader.gif" alt="loading">
-  </div>
+  </div> -->
 <div v-show="weather" class="home-page" :style="{ backgroundImage: 'url(' + getImage() + ')' }">
     <WeatherInfo />
     <SearchCity />
