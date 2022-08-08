@@ -21,6 +21,10 @@ export default {
   },
   methods: {
     getImage() {
+      // const mediaQuery = window.matchMedia('(max-width: 768px)');
+      // if (mediaQuery.matches) {
+      //   return 'https://thumbs.dreamstime.com/b/blue-winter-mobile-phone-wallpaper-rich-saturated-bright-color-tinted-grainy-vertical-background-dark-light-tones-surface-227498195.jpg';
+      // }
       if (this.weather == null) {
         return weatherBg;
       }
@@ -43,10 +47,27 @@ export default {
       if (weather === 'Clear') {
         return clearSkyBg;
       }
-      if (weather === 'Haze') {
+      if (weather === 'Haze' || weather === 'Mist') {
         return hazeBg;
       }
       return weatherBg;
+    },
+    showPosition(position) {
+      this.latitude = position.coords.latitude;
+      this.longitude = position.coords.longitude;
+      this.$store.dispatch('weatherData/fetchCurrentCity', { lat: this.latitude, long: this.longitude });
+    },
+    getLocation() {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(this.showPosition, this.handleError);
+      } else {
+        console.log('Geolocation is not supported by this browser.');
+      }
+    },
+    handleError(error) {
+      if (error.code === error.PERMISSION_DENIED) {
+        this.$store.dispatch('weatherData/fetchUserLocation');
+      }
     }
   },
   computed: {
@@ -56,7 +77,7 @@ export default {
   },
   created() {
     this.$store.dispatch('weatherData/fetchCitiesData');
-    this.$store.dispatch('weatherData/fetchUserLocation');
+    this.getLocation();
   }
 };
 </script>

@@ -1,13 +1,19 @@
+@import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/variables";
+@import "~bootstrap/scss/mixins";
 .loader{
     margin: 300px auto 100px auto;
 }
 .home-page{
     display: flex;
+    flex-direction: column;
+    @include media-breakpoint-up(md) { 
+        flex-direction: row;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
     justify-content: space-between;
-    height: 100%;
-    width: 100%;
-    background-image: url('https://t3.ftcdn.net/jpg/03/19/67/24/360_F_319672457_RgWdAgsS2MzHQRvU5jJWvpyCDwIYr8O9.jpg');
-    background-repeat: no-repeat;
-    background-size: cover;
+    height: 100vh;
+   
     font-family: 'Roboto', sans-serif;
 }

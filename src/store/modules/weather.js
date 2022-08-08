@@ -44,12 +44,14 @@ const weatherData = {
       const result = response.data;
       commit('updateWeather', result);
     },
-    async fetchUserLocation({ dispatch }) {
+    async fetchUserLocation({ commit }) {
       const getIp = await axios.get('https://api.ipify.org?format=json');
       const ipAddress = getIp.data.ip;
-      const getCityAndCountry = await axios.get(`https://geo.ipify.org/api/v2/country,city?apiKey=at_aAwN722PKlEy3SlQV1gFpzZcY43Xc&ipAddress=${ipAddress}`);
-      const cityAndCountry = [getCityAndCountry.data.location.city, '_', getCityAndCountry.data.location.country];
-      dispatch('fetchWeatherData', cityAndCountry);
+      const getLatAndLong = await axios.get(`https://geo.ipify.org/api/v2/country,city?apiKey=at_aAwN722PKlEy3SlQV1gFpzZcY43Xc&ipAddress=${ipAddress}`);
+      const latAndLong = [getLatAndLong.data.location.lat, getLatAndLong.data.location.lng];
+      const response = await axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${latAndLong[0]}&lon=${latAndLong[1]}&appid=5a884753d54e27765479c5d311582b20&units=metric`);
+      const result = response.data;
+      commit('updateWeather', result);
     }
   }
 };

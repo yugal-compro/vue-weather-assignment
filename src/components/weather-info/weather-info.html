@@ -3,7 +3,7 @@
         <p class="temp">{{ weather.main.temp }}&deg;</p>
         <div>
             <p class="city-name">{{ weather.name }}</p>  
-            <p>{{ date }}</p>
+            <p class="date">{{ date }}</p>
         </div>
         <div>
             <p class="icon" v-if="weather.weather[0].main === 'Clouds'"> <b-icon-clouds /></p>
@@ -12,6 +12,7 @@
             <p class="icon" v-if="weather.weather[0].main === 'Rain'"> <b-icon-cloud-drizzle /></p>
             <p class="icon" v-if="weather.weather[0].main === 'Snow'"> <b-icon-snow /></p>
             <p class="icon" v-if="weather.weather[0].main === 'Thunderstorm'"> <b-icon-cloud-lightning-rain /></p>
+            <p class="icon" v-if="weather.weather[0].main === 'Mist'"> <b-icon-cloud-haze /></p>
             <p class="main">{{ weather.weather[0].description }}</p>
         </div>
     </div>
