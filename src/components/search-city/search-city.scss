@@ -1,9 +1,10 @@
-@import "~bootstrap/scss/functions";
-@import "~bootstrap/scss/variables";
-@import "~bootstrap/scss/mixins";
+@import "../../assets/helpers";
 .side-bar {
   flex-grow: 3;
   backdrop-filter: blur(30px);
+  @include media-breakpoint-down(sm){
+    backdrop-filter: blur(10px);
+  }
   color: white;
   padding: 24px;
   .search-city-container {
