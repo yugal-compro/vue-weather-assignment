@@ -1,0 +1,64 @@
+@import "../../assets/helpers";
+.loader{
+    margin: 300px auto 100px auto;
+}
+.home-page{
+    display: flex;
+    flex-direction: column;
+    @include media-breakpoint-up(md) { 
+        flex-direction: row;
+    }
+    justify-content: space-between;
+    height: 100%;
+    overflow-y: hidden;
+    font-family: 'Roboto', sans-serif;
+}
+
+.clouds-bg{
+   background-image: url('../../assets/background-images/clouds-bg.jpg');
+   background-repeat: no-repeat;
+   background-size: cover;
+   @include media-breakpoint-down(sm){
+      background-image: url('../../assets/mobile-background/clouds-bg.jpg');
+   }
+}
+.rain-bg{
+    background-image: url('../../assets/background-images/rain-bg.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    @include media-breakpoint-down(sm){
+       background-image: url('../../assets/mobile-background/rain-bg.jpg');
+    }
+}
+.clear-bg{
+    background-image: url('../../assets/background-images/clearsky-bg.jpg');
+   background-repeat: no-repeat;
+   background-size: cover;
+   @include media-breakpoint-down(sm){
+      background-image: url('../../assets/mobile-background/clear-bg.jpg');
+   }
+}
+.thunderstorm-bg{
+    background-image: url('../../assets/background-images/thunderstorm-bg.jpg');
+   background-repeat: no-repeat;
+   background-size: cover;
+   @include media-breakpoint-down(sm){
+      background-image: url('../../assets/mobile-background/thunderstorm-bg.jpg');
+   }
+}
+.haze-bg{
+    background-image: url('../../assets/background-images/haze-bg.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    @include media-breakpoint-down(sm){
+       background-image: url('../../assets/mobile-background/haze-bg.jpg');
+    }
+}
+.snow-bg{
+    background-image: url('../../assets/background-images/snow-bg.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    @include media-breakpoint-down(sm){
+       background-image: url('../../assets/mobile-background/snow-bg.jpg');
+    }
+}

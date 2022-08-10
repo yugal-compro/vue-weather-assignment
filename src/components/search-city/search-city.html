@@ -1,9 +1,30 @@
-<div class="search-city-container">
-    <input type="text" v-model="inputValue" placeholder="Search city...">
-    <div v-if="inputValue.length!=0">
-        <div v-for="city in filteredList()" :key="city">
-            <p @click="getWeather">{{ city }}</p>
+<div class="side-bar">
+    <!-- search bar and search results -->
+    <div class="search-city-container">
+        <input type="text" v-model="inputValue" :placeholder=placeholderValue>
+        <div v-if="inputValue.length!=0">
+            <div v-for="city in filteredList()" :key="city">
+                <p @click="getWeather">{{ city }}</p>
+            </div>
         </div>
     </div>
-    
+
+    <div class="horizontal-line"></div>
+
+    <!-- weather details -->
+    <div v-if="weather" class="weather-details">
+        <p class="weather-details-heading">Weather Details</p>
+        <div class="weather-details-item">
+            <p>Humidity</p>
+            <p class="weather-details-value">{{ weather.main.humidity }}&percnt;</p>
+        </div>
+        <div class="weather-details-item">
+            <p>Wind</p>
+            <p class="weather-details-value">{{ weather.wind.speed }}km/hr</p>
+        </div>
+        <div class="weather-details-item">
+            <p>Feels like</p>
+            <p class="weather-details-value">{{ weather.main.feels_like }}&#8451;</p>
+        </div>
+    </div>
 </div>

@@ -1,4 +1,29 @@
-<div>
-    <SearchCity/>
-    <WeatherInfo/>
+
+<div v-if="weatherMain === 'Clouds'" class="home-page clouds-bg">
+  <WeatherInfo />
+  <SearchCity />
+</div>
+<div v-if="weatherMain === 'Rain'" class="home-page rain-bg">
+  <WeatherInfo />
+  <SearchCity />
+</div>
+<div v-if="weatherMain === 'Thunderstorm'" class="home-page thunderstorm-bg">
+  <WeatherInfo />
+  <SearchCity />
+</div>
+<div v-if="weatherMain === 'Drizzle'" class="home-page rain-bg">
+  <WeatherInfo />
+  <SearchCity />
+</div>
+<div v-if="weatherMain === 'Snow'" class="home-page snow-bg">
+  <WeatherInfo />
+  <SearchCity />
+</div>
+<div v-if="weatherMain === 'Clear'" class="home-page clear-bg">
+  <WeatherInfo />
+  <SearchCity />
+</div>
+<div v-if="weatherMain === 'Haze' || weatherMain==='Mist' " class="home-page haze-bg">
+  <WeatherInfo />
+  <SearchCity />
 </div>

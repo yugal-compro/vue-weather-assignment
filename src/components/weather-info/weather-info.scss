@@ -1,8 +1,70 @@
-.weather-info-container{
-    text-align: center;
-    margin: 100px;
-    width: 400px;
-    border: 1px solid;
-    padding: 10px;
-    box-shadow: 5px 10px 18px #888888;
+@import "../../assets/helpers";
+.weather-info-container {
+  flex-grow: 7;
+  text-align: center;
+  color: white;
+  display: flex;
+  align-items: flex-end;
+ 
+  @include media-breakpoint-down(sm){
+    justify-content: center;
+  }
+  p{
+    margin: 0;
+  }
+ 
+  .weather-info {
+    
+    @include media-breakpoint-up(md) { 
+      display: flex;
+      margin-left: 40px;
+      margin-bottom: 24px;
+    }
+    
+    .temp {
+      
+        font-size: 40px;
+        margin-bottom: 24px;
+      @include media-breakpoint-up(xl) { 
+        font-size: 60px;
+        margin-bottom: 0;
+      }
+      @include media-breakpoint-up(xxl) { 
+        font-size: 80px;
+      }
+    }
+    .city-name {
+      
+        font-size: 30px;
+        margin-bottom: 8px;
+      @include media-breakpoint-up(xl) { 
+        font-size: 40px;
+        margin-bottom: 0;
+      }
+      @include media-breakpoint-up(xxl) { 
+        font-size: 60px;
+      }
+    }
+    .icon{
+     
+        font-size: 30px;
+        
+      @include media-breakpoint-up(xl) { 
+        font-size: 40px;
+      }
+      @include media-breakpoint-up(xxl) { 
+        font-size: 60px;
+      }
+    }
+    .main{
+      margin-left: 8px;
+    }
+    .date{
+      margin-bottom: 24px;
+      @include media-breakpoint-up(md) { 
+        margin-bottom: 0;
+      }
+    }
+  }
 }
+

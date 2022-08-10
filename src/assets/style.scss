@@ -1,0 +1,17 @@
+@import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/variables";
+@import "~bootstrap/scss/mixins";
+body{
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    
+      background-image: url('./background-images/bg.webp');
+    
+    background-repeat: no-repeat;
+    background-size: cover;
+    backdrop-filter: blur(10px);
+    #app{
+        height: 100%;
+    }
+}
